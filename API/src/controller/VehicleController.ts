@@ -1,41 +1,59 @@
 import { getRepository } from 'typeorm';
 import { Request, Response } from 'express';
-import { Vehicles } from '../entity/Vehicles';
+import { Vehiculos } from '../entity/Vehiculos';
 import { validate } from 'class-validator';
 
 export class VehicleController {
-
+    
     static getAll = async (req: Request, res: Response) => {
       
-        const userRepository = getRepository(Vehicles);
-        let vehicles;
+        const userRepository = getRepository(Vehiculos);
+        let vehiculos;
         
         try {
-            vehicles = await userRepository.find({ select: ['id-vehiculo'] });
+          vehiculos = await userRepository.find({ select: ['idVehiculo', 'idModelo' , 'color', 'km'] }, );
             
         } catch (e) {
           res.status(404).json({ message: 'Somenthing goes wrong!' });
         }
     
-        if (vehicles.length > 0) {
-          res.send(vehicles);
+        if (vehiculos.length > 0) {
+          res.send(vehiculos);
         } else {
           res.status(404).json({ message: 'Not result' });
         }
         
       };
-    /*
-      static getById = async (req: Request, res: Response) => {
-        const { id } = req.params;
-        const userRepository = getRepository(Vehicles);
+      
+      static getByUserId = async (req: Request, res: Response, userId) => {
+        const userRepository = getRepository(Vehiculos);
+        let vehiculos;
+        
         try {
-          const user = await userRepository.findOneOrFail(id);
-          res.send(user);
+          vehiculos = await userRepository.find();
+            
         } catch (e) {
+          res.status(404).json({ message: 'Somenthing goes wrong!' });
+        }
+    
+        if (vehiculos.length > 0) {
+          res.send(vehiculos);
+        } else {
           res.status(404).json({ message: 'Not result' });
         }
       };
     
+      static getById = async (req: Request, res: Response) => {
+        const { id } = req.params;
+        const userRepository = getRepository(Vehiculos);
+        try {
+          const vehiculo = await userRepository.findOneOrFail(id);
+          res.send(vehiculo);
+        } catch (e) {
+          res.status(404).json({ message: 'Not result' });
+        }
+      };
+    /*
       static new = async (req: Request, res: Response) => {
         const { username, password, role } = req.body;
         const user = new Vehicles();

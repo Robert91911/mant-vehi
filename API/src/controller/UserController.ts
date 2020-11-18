@@ -21,6 +21,17 @@ export class UserController {
     }
   };
 
+  static getCarsById = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const userRepository = getRepository(Users);
+    try {
+      const user = await userRepository.findOneOrFail(id);
+      res.send(user);
+    } catch (e) {
+      res.status(404).json({ message: 'Not result' });
+    }
+  };
+
   static getById = async (req: Request, res: Response) => {
     const { id } = req.params;
     const userRepository = getRepository(Users);

@@ -3,6 +3,7 @@ import {
   Entity,
   Index,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
@@ -10,7 +11,9 @@ import { Marca } from "./Marca";
 import { Vehiculos } from "./Vehiculos";
 
 @Index("id-marca", ["idMarca"], { unique: true })
+@Index("IDX_a4916476ab0f06d439813369ce", ["idMarca"], { unique: true })
 @Index("id-marca_2", ["idMarca"], {})
+@Index("id-marca_3", ["idMarca"], {})
 @Entity("modelos", { schema: "login_node" })
 export class Modelos {
   @PrimaryGeneratedColumn({ type: "int", name: "id-modelo" })
@@ -50,6 +53,6 @@ export class Modelos {
   @JoinColumn([{ name: "id-marca", referencedColumnName: "idMarca" }])
   idMarca2: Marca;
 
-  @OneToOne(() => Vehiculos, (vehiculos) => vehiculos.idModelo2)
-  vehiculos: Vehiculos;
+  @OneToMany(() => Vehiculos, (vehiculos) => vehiculos.idModelo2)
+  vehiculos: Vehiculos[];
 }

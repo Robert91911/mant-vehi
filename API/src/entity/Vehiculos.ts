@@ -3,22 +3,26 @@ import {
   Entity,
   Index,
   JoinColumn,
+  ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Mantenimientos } from "./Mantenimientos";
-import { VehiculoUsuario } from "./VehiculoUsuario";
 import { Modelos } from "./Modelos";
+import { Users } from "./Users";
 
-@Index("id-modelo", ["idModelo"], { unique: true })
+@Index("id-modelo_3", ["idModelo"], {})
+@Index("id-usuario", ["idUsuario"], {})
 @Entity("vehiculos", { schema: "login_node" })
 export class Vehiculos {
   @PrimaryGeneratedColumn({ type: "int", name: "id-vehiculo" })
   idVehiculo: number;
 
-  @Column("int", { name: "id-modelo", unique: true })
+  @Column("int", { name: "id-modelo" })
   idModelo: number;
+
+  @Column("int", { name: "id-usuario" })
+  idUsuario: number;
 
   @Column("varchar", { name: "color", length: 50 })
   color: string;
@@ -38,16 +42,17 @@ export class Vehiculos {
   )
   mantenimientos: Mantenimientos[];
 
-  @OneToOne(
-    () => VehiculoUsuario,
-    (vehiculoUsuario) => vehiculoUsuario.idVehiculo2
-  )
-  vehiculoUsuario: VehiculoUsuario;
-
-  @OneToOne(() => Modelos, (modelos) => modelos.vehiculos, {
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
+  @ManyToOne(() => Modelos, (modelos) => modelos.vehiculos, {
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION",
   })
   @JoinColumn([{ name: "id-modelo", referencedColumnName: "idModelo" }])
   idModelo2: Modelos;
+
+  @ManyToOne(() => Users, (users) => users.vehiculos, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  @JoinColumn([{ name: "id-usuario", referencedColumnName: "id" }])
+  idUsuario2: Users;
 }

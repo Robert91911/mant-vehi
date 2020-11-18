@@ -5,13 +5,32 @@ import { validate } from 'class-validator';
 
 export class VehicleController {
     
+    static getUserVehicles = async (req: Request, res: Response) => {
+      const { id } = req.params;
+      const userRepository = getRepository(Vehiculos);
+      let users;
+
+      try {
+        users = await userRepository.find({ where: {idUsuario: id} });
+      } catch (e) {
+        res.status(404).json({ message: 'Somenthing goes wrong!' });
+      }
+
+      if (users.length > 0) {
+        res.send(users);
+      } else {
+        res.status(404).json({ message: 'Not result' });
+      }
+    };
+
     static getAll = async (req: Request, res: Response) => {
       
         const userRepository = getRepository(Vehiculos);
         let vehiculos;
         
         try {
-          vehiculos = await userRepository.find({ select: ['idVehiculo', 'idModelo' , 'color', 'km'] }, );
+          vehiculos = await userRepository.find({ select: ['idVehiculo', 'idModelo' , 'color', 'km', 'idUsuario2'] }, 
+          );
             
         } catch (e) {
           res.status(404).json({ message: 'Somenthing goes wrong!' });
@@ -23,24 +42,6 @@ export class VehicleController {
           res.status(404).json({ message: 'Not result' });
         }
         
-      };
-      
-      static getByUserId = async (req: Request, res: Response, userId) => {
-        const userRepository = getRepository(Vehiculos);
-        let vehiculos;
-        
-        try {
-          vehiculos = await userRepository.find();
-            
-        } catch (e) {
-          res.status(404).json({ message: 'Somenthing goes wrong!' });
-        }
-    
-        if (vehiculos.length > 0) {
-          res.send(vehiculos);
-        } else {
-          res.status(404).json({ message: 'Not result' });
-        }
       };
     
       static getById = async (req: Request, res: Response) => {

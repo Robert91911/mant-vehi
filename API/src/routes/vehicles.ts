@@ -9,6 +9,9 @@ router.get('/:id', VehicleController.getById);
 // Get all vehicles
 router.get('/', VehicleController.getAll);
 
+// Get vehicles of a user
+router.get('/', VehicleController.getAll);
+
 // Delete vehicle
 
 // Create vehicle

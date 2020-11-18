@@ -11,6 +11,7 @@ import { TiposMantenimientos } from "./TiposMantenimientos";
 import { Vehiculos } from "./Vehiculos";
 
 @Index("id-tipo", ["idTipo"], { unique: true })
+@Index("IDX_3d46930b916765aeebc74498e8", ["idTipo"], { unique: true })
 @Index("id-vehiculo", ["idVehiculo"], {})
 @Index("id-tipo_2", ["idTipo"], {})
 @Entity("mantenimientos", { schema: "login_node" })

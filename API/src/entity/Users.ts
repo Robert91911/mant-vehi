@@ -1,26 +1,31 @@
-import {Column,Entity,Index,OneToOne,PrimaryGeneratedColumn} from "typeorm";
-import {VehiculoUsuario} from './VehiculoUsuario'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Vehiculos } from "./Vehiculos";
+import * as bcrypt from 'bcryptjs';
 
+@Entity("users", { schema: "login_node" })
+export class Users {
+  @PrimaryGeneratedColumn({ type: "int", name: "id" })
+  id: number;
 
-@Index("username",["username",],{ unique:true })
-@Entity("users" ,{schema:"login_node" } )
-export  class Users {
+  @Column("varchar", { name: "username", length: 255 })
+  username: string;
 
-@PrimaryGeneratedColumn({ type:"int", name:"id" })
-id:number;
+  @Column("varchar", { name: "password", length: 255 })
+  password: string;
 
-@Column("varchar",{ name:"username",unique:true,length:255 })
-username:string;
+  @Column("varchar", { name: "role", length: 255 })
+  role: string;
 
-@Column("varchar",{ name:"password",length:255 })
-password:string;
+  @OneToMany(() => Vehiculos, (vehiculos) => vehiculos.idUsuario2)
+  vehiculos: Vehiculos[];
 
-@Column("varchar",{ name:"role",length:255 })
-role:string;
+  hashPassword(): void {
+    const salt = bcrypt.genSaltSync(10);
+    this.password = bcrypt.hashSync(this.password, salt);
+  }
 
-@OneToOne(()=>VehiculoUsuario,vehiculoUsuario=>vehiculoUsuario)
-
-
-vehiculoUsuario:VehiculoUsuario;
+  checkPassword(password: string): boolean {
+    return bcrypt.compareSync(password, this.password);
+  }
 
 }

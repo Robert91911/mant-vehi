@@ -2,12 +2,15 @@ import { checkRole } from './../middlewares/role';
 import { checkJwt } from './../middlewares/jwt';
 import { UserController } from './../controller/UserController';
 import { Router } from 'express';
+import VehicleController from '../controller/VehicleController';
 
 const router = Router();
 
 // Get all users
 router.get('/', UserController.getAll);
 
+//Get users vehicles
+router.get('/vehicles/:id', VehicleController.getUserVehicles);
 
 // Get one user
 router.get('/:id', [checkJwt, checkRole(['admin'])], UserController.getById);

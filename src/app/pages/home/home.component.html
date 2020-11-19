@@ -1,4 +1,8 @@
 <h1 *ngIf="(authSvc.user$ | async) as user">
   Welcome, {{ user?.username || 'User' }}.
 </h1>
-<p>home works!</p>
+<p>home works! </p>
+
+<h2 *ngIf="(authSvc.user$ | async) as user">
+  Welcome, {{ user?.username || 'User' }}.
+</h2>

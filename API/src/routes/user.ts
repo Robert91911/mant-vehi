@@ -10,7 +10,7 @@ const router = Router();
 router.get('/', UserController.getAll);
 
 //Get users vehicles
-router.get('/vehicles/:id', VehicleController.getUserVehicles);
+
 
 // Get one user
 router.get('/:id', [checkJwt, checkRole(['admin'])], UserController.getById);

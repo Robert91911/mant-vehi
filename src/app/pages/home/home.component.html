@@ -3,6 +3,17 @@
 </h1>
 <p>home works! </p>
 
-<h2 *ngIf="(authSvc.user$ | async) as user">
-  Welcome, {{ user?.username || 'User' }}.
-</h2>
+<div class="colm-md-4" *ngFor="let vehicle of vehicles">
+
+  <div class="card text-center">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+          {{vehicle.matricula}}
+              <i class="far fa-trash-alt"></i>
+      </div>
+      <div class="card-body">
+          <p>{{vehicle.color}}</p>
+              Ver mantenimientos
+      </div>
+  </div>
+
+</div>

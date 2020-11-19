@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from '@auth/auth.service';
-import { VehiclesService } from './../home/services/vehicles.service';
+import { VehiclesService } from './../home/vehicles.service';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +9,22 @@ import { VehiclesService } from './../home/services/vehicles.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService) {}
-  dataSource = new MatTableDataSource();
+  
+
+  vehicles: any = [];
+
+  constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService) { }
 
   ngOnInit(): void {
-    this.vehicleSvc.getAll(1).subscribe((vehicles) => {
-      this.dataSource.data = vehicles;
-    });
+    this.getAll();
   }
-}
+  
+  getAll() {
+    this.vehicleSvc.getAll(1).subscribe(
+      res => {
+        this.vehicles = res;
+      },
+      err => console.log(err)
+    );
+  }
+  }

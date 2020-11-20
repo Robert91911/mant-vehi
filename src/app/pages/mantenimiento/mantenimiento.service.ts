@@ -10,8 +10,8 @@ export class MantenimientoService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(userId: number) {
-    return this.http.get(`${environment.API_URL}/mants/${userId}`);
+  getAll(mantId: number) {
+    return this.http.get(`${environment.API_URL}/mants/${mantId}`);
   }
 
   handlerError(error): Observable<never> {

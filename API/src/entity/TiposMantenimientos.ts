@@ -9,6 +9,6 @@ export class TiposMantenimientos {
   @Column("varchar", { name: "nombre", length: 255 })
   nombre: string;
 
-  @OneToOne(() => Mantenimientos, (mantenimientos) => mantenimientos.idTipo2)
+  @OneToOne(() => Mantenimientos, (mantenimientos) => mantenimientos.idTipo)
   mantenimientos: Mantenimientos;
 }

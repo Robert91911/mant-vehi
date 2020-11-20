@@ -2,14 +2,21 @@
 
     <div class="card text-center">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            {{vehicle.matricula}}
+            {{mantenance.nombre}}
                 <i class="far fa-trash-alt"></i>
         </div>
         <div class="card-body">
-            <p>{{vehicle.color}}</p>
+            <p>Importe: {{mantenance.importe}}</p>
+            <p>Creado: {{mantenance.fechaCreacion}}</p>
+            <p>Km: {{mantenance.kmMant}}</p>
+            <p>Ubicación: {{mantenance.ubicacion}}</p>
+            <p>Teller: {{mantenance.taller}}</p>
+        </div>
+        <div class="card-body">
+            <p></p>
   
               <a [routerLink]="['/mantenimiento']" class="btn btn-info btn-block">
-                  VER MANTENIMIENTOS
+                  EDITAR MANTENIMIENTOS
               </a>
         </div>
     </div>

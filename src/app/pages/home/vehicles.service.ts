@@ -15,11 +15,6 @@ export class VehiclesService {
     return this.http.get(`${environment.API_URL}/vehicles/${userId}`);
   }
 
-  private saveLocalStorage(vehicle: VehicleResponse): void {
-    const { vehiculos, ...rest } = vehicle;
-    localStorage.setItem('vehiculos', JSON.stringify(rest));
-  }
-
   handlerError(error): Observable<never> {
     let errorMessage = 'Error unknown';
     if (error) {

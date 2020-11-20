@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { MantenimientoService } from './../mantenimiento/mantenimiento.service';
 
@@ -9,20 +10,19 @@ import { MantenimientoService } from './../mantenimiento/mantenimiento.service';
 })
 export class MantenimientoComponent implements OnInit {
 
-  mantenance: any = [];
+  mantenances: any = [];
 
-  constructor( private mantsSvc: MantenimientoService) { }
+  constructor( private mantsSvc: MantenimientoService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAll();
   }
   
   getAll() {
-    const id_usuario = JSON.parse(localStorage.getItem('user')) || null;
-    console.log(id_usuario.userId)
-    this.mantsSvc.getAll(id_usuario.userId).subscribe(
+    const params = this.activatedRoute.snapshot.params;
+    this.mantsSvc.getAll(params.id).subscribe(
       res => {
-        this.mantenance = res;
+        this.mantenances = res;
       },
       err => console.log(err)
     );

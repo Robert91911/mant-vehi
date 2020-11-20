@@ -4,14 +4,10 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { TiposMantenimientos } from "./TiposMantenimientos";
 import { Vehiculos } from "./Vehiculos";
 
-@Index("id-tipo", ["idTipo"], { unique: true })
-@Index("IDX_3d46930b916765aeebc74498e8", ["idTipo"], { unique: true })
 @Index("id-vehiculo", ["idVehiculo"], {})
 @Index("id-tipo_2", ["idTipo"], {})
 @Entity("mantenimientos", { schema: "login_node" })
@@ -22,7 +18,7 @@ export class Mantenimientos {
   @Column("int", { name: "id-vehiculo" })
   idVehiculo: number;
 
-  @Column("int", { name: "id-tipo", unique: true })
+  @Column("int", { name: "id-tipo" })
   idTipo: number;
 
   @Column("varchar", { name: "nombre", length: 255 })
@@ -45,14 +41,6 @@ export class Mantenimientos {
 
   @Column("varchar", { name: "taller", length: 255 })
   taller: string;
-
-  @OneToOne(
-    () => TiposMantenimientos,
-    (tiposMantenimientos) => tiposMantenimientos.mantenimientos,
-    { onDelete: "CASCADE", onUpdate: "CASCADE" }
-  )
-  @JoinColumn([{ name: "id-tipo", referencedColumnName: "idTipo" }])
-  idTipo2: TiposMantenimientos;
 
   @ManyToOne(() => Vehiculos, (vehiculos) => vehiculos.mantenimientos, {
     onDelete: "CASCADE",

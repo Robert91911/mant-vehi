@@ -17,8 +17,6 @@ export class HomeComponent implements OnInit {
 
   constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService) { }
 
-  
-
   ngOnInit(): void {
     this.getAll();
   }
@@ -29,7 +27,6 @@ export class HomeComponent implements OnInit {
     this.vehicleSvc.getAll(id_usuario.userId).subscribe(
       res => {
         this.vehicles = res;
-        localStorage.setItem('vehiculos', JSON.stringify(res));
       },
       err => console.log(err)
     );

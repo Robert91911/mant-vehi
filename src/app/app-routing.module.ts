@@ -26,7 +26,7 @@ const routes: Routes = [
       import('./pages/auth/login/login.module').then((m) => m.LoginModule),
     canActivate: [CheckLoginGuard],
   },
-  { path: 'mantenimiento', loadChildren: () => import('./pages/mantenimiento/mantenimiento.module').then(m => m.MantenimientoModule) },
+  { path: 'mantenimiento/:id', loadChildren: () => import('./pages/mantenimiento/mantenimiento.module').then(m => m.MantenimientoModule) },
 ];
 
 @NgModule({

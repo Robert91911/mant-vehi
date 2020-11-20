@@ -12,8 +12,9 @@
       </div>
       <div class="card-body">
           <p>{{vehicle.color}}</p>
+          <p>{{vehicle.idVehiculo}}</p>
 
-            <a [routerLink]="['/mantenimiento']"  class="btn btn-info btn-block">
+            <a [routerLink]="['/mantenimiento', vehicle.idVehiculo]"  class="btn btn-info btn-block">
                 VER MANTENIMIENTOS
             </a>
       </div>

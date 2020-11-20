@@ -14,7 +14,7 @@ const helper = new JwtHelperService();
   providedIn: 'root',
 })
 export class AuthService {
-  private user = new BehaviorSubject<UserResponse>(null);
+  public user = new BehaviorSubject<UserResponse>(null);
 
   constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   private saveLocalStorage(user: UserResponse): void {
-    const { userId, message, ...rest } = user;
+    const { message, ...rest } = user;
     localStorage.setItem('user', JSON.stringify(rest));
   }
 

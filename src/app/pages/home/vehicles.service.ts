@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Vehicle } from '@app/shared/models/vehicle.interface'
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class VehiclesService {
   constructor(private http: HttpClient) {}
+
   /*
   getAll(userId: number): Observable<Vehicle[]> {
     return this.http
@@ -18,6 +18,7 @@ export class VehiclesService {
     .pipe(catchError(this.handlerError));
   }
   */
+ 
   getAll(userId: number) {
     return this.http.get(`${environment.API_URL}/vehicles/${userId}`);
   }

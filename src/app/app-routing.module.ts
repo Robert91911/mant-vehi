@@ -26,15 +26,11 @@ const routes: Routes = [
       import('./pages/auth/login/login.module').then((m) => m.LoginModule),
     canActivate: [CheckLoginGuard],
   },
-  {
-    path: 'mantenimiento',
-    loadChildren: () =>
-      import('./pages/auth/login/login.module').then((m) => m.LoginModule),
-  },
+  { path: 'mantenimiento', loadChildren: () => import('./pages/mantenimiento/mantenimiento.module').then(m => m.MantenimientoModule) },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

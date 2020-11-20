@@ -1,1 +1,17 @@
-<p>mantenimiento works!</p>
+<div class="colm-md-4" *ngFor="let mantenance of mantenances">
+
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{vehicle.matricula}}
+                <i class="far fa-trash-alt"></i>
+        </div>
+        <div class="card-body">
+            <p>{{vehicle.color}}</p>
+  
+              <a [routerLink]="['/mantenimiento']" class="btn btn-info btn-block">
+                  VER MANTENIMIENTOS
+              </a>
+        </div>
+    </div>
+  
+  </div>

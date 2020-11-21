@@ -14,8 +14,9 @@ router.get('/', VehicleController.getAll);
 
 
 // Delete vehicle
-
+router.post('/', VehicleController.new);
 // Create vehicle
+
 
 // Edit vehicle
 

@@ -1,4 +1,4 @@
-import { getRepository } from 'typeorm';
+import { getRepository, PrimaryGeneratedColumn } from 'typeorm';
 import { Request, Response } from 'express';
 import { Vehiculos } from '../entity/Vehiculos';
 import { validate } from 'class-validator';
@@ -7,11 +7,11 @@ export class VehicleController {
     
     static getUserVehicles = async (req: Request, res: Response) => {
       const { id } = req.params;
-      const userRepository = getRepository(Vehiculos);
+      const vehicleRepository = getRepository(Vehiculos);
       let users;
 
       try {
-        users = await userRepository.find({ where: {idUsuario: id} });
+        users = await vehicleRepository.find({ where: {idUsuario: id} });
       } catch (e) {
         res.status(404).json({ message: 'Somenthing goes wrong!' });
       }
@@ -25,11 +25,11 @@ export class VehicleController {
 
     static getAll = async (req: Request, res: Response) => {
       
-        const userRepository = getRepository(Vehiculos);
+        const vehicleRepository = getRepository(Vehiculos);
         let vehiculos;
         
         try {
-          vehiculos = await userRepository.find({ select: ['idVehiculo', 'idModelo' , 'color', 'km', 'idUsuario2'] }, 
+          vehiculos = await vehicleRepository.find({ select: ['idVehiculo', 'idModelo' , 'color', 'km', 'idUsuario2'] }, 
           );
             
         } catch (e) {
@@ -46,52 +46,52 @@ export class VehicleController {
     
       static getById = async (req: Request, res: Response) => {
         const { id } = req.params;
-        const userRepository = getRepository(Vehiculos);
+        const vehicleRepository = getRepository(Vehiculos);
         try {
-          const vehiculo = await userRepository.findOneOrFail(id);
+          const vehiculo = await vehicleRepository.findOneOrFail(id);
           res.send(vehiculo);
         } catch (e) {
           res.status(404).json({ message: 'Not result' });
         }
       };
-    /*
-      static new = async (req: Request, res: Response) => {
-        const { username, password, role } = req.body;
-        const user = new Vehicles();
     
-        user.username = username;
-        user.password = password;
-        user.role = role;
+      static new = async (req: Request, res: Response) => {
+        const { idModelo, idUsuario, color, matricula, km, imagen } = req.body;
+        const vehiculo = new Vehiculos();
+
+        vehiculo.idModelo = idModelo;
+        vehiculo.idUsuario = idUsuario;
+        vehiculo.color = color;
+        vehiculo.matricula = matricula;
+        vehiculo.km = km;
+        vehiculo.imagen = imagen
     
         // Validate
         const validationOpt = { validationError: { target: false, value: false } };
-        const errors = await validate(user, validationOpt);
+        const errors = await validate(vehiculo, validationOpt);
         if (errors.length > 0) {
           return res.status(400).json(errors);
         }
     
-        // TODO: HASH PASSWORD
-    
-        const userRepository = getRepository(Vehicles);
+        const vehicleRepository = getRepository(Vehiculos);
         try {
-          user.hashPassword();
-          await userRepository.save(user);
+          await vehicleRepository.save(vehiculo);
         } catch (e) {
-          return res.status(409).json({ message: 'Username already exist' });
+          return res.status(409).json({ message: 'Vehicle already exist', e });
         }
         // All ok
-        res.send('User created');
+        res.send('Vehicle created');
       };
-    
+    /*
       static edit = async (req: Request, res: Response) => {
         let user;
         const { id } = req.params;
         const { username, role } = req.body;
     
-        const userRepository = getRepository(Vehicles);
+        const vehicleRepository = getRepository(Vehicles);
         // Try get user
         try {
-          user = await userRepository.findOneOrFail(id);
+          user = await vehicleRepository.findOneOrFail(id);
           user.username = username;
           user.role = role;
         } catch (e) {
@@ -106,7 +106,7 @@ export class VehicleController {
     
         // Try to save user
         try {
-          await userRepository.save(user);
+          await vehicleRepository.save(user);
         } catch (e) {
           return res.status(409).json({ message: 'Username already in use' });
         }
@@ -116,20 +116,21 @@ export class VehicleController {
     
       static delete = async (req: Request, res: Response) => {
         const { id } = req.params;
-        const userRepository = getRepository(Vehicles);
+        const vehicleRepository = getRepository(Vehicles);
         let user: Vehicles;
     
         try {
-          user = await userRepository.findOneOrFail(id);
+          user = await vehicleRepository.findOneOrFail(id);
         } catch (e) {
           return res.status(404).json({ message: 'User not found' });
         }
     
         // Remove user
-        userRepository.delete(id);
+        vehicleRepository.delete(id);
         res.status(201).json({ message: ' User deleted' });
       };
       */
+      
     }
     
     export default VehicleController;

@@ -4,7 +4,7 @@
   "port": 3306,
   "username": "root",
   "password": "Clave_00",
-  "database": "login_node",
+  "database": "mant_vehi",
   "synchronize": true,
   "logging": false,
   "entities": ["src/entity/**/*.ts"],

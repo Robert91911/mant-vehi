@@ -3,23 +3,20 @@ import {
   Entity,
   Index,
   JoinColumn,
+  ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Marca } from "./Marca";
 import { Vehiculos } from "./Vehiculos";
 
-@Index("id-marca", ["idMarca"], { unique: true })
-@Index("IDX_a4916476ab0f06d439813369ce", ["idMarca"], { unique: true })
-@Index("id-marca_2", ["idMarca"], {})
-@Index("id-marca_3", ["idMarca"], {})
-@Entity("modelos", { schema: "login_node" })
+@Index("FK_ID_MARCA", ["idMarca"], {})
+@Entity("modelos", { schema: "mant_vehi" })
 export class Modelos {
   @PrimaryGeneratedColumn({ type: "int", name: "id-modelo" })
   idModelo: number;
 
-  @Column("int", { name: "id-marca", unique: true })
+  @Column("int", { name: "id-marca" })
   idMarca: number;
 
   @Column("varchar", { name: "nombre", length: 255 })
@@ -46,7 +43,7 @@ export class Modelos {
   @Column("varchar", { name: "combustible", length: 255 })
   combustible: string;
 
-  @OneToOne(() => Marca, (marca) => marca.modelos, {
+  @ManyToOne(() => Marca, (marca) => marca.modelos, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })

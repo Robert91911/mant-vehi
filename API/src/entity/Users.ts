@@ -2,7 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Vehiculos } from "./Vehiculos";
 import * as bcrypt from 'bcryptjs';
 
-@Entity("users", { schema: "login_node" })
+@Entity("users", { schema: "mant_vehi" })
 export class Users {
   @PrimaryGeneratedColumn({ type: "int", name: "id" })
   id: number;

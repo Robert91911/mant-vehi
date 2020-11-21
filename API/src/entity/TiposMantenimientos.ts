@@ -1,7 +1,7 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Mantenimientos } from "./Mantenimientos";
 
-@Entity("tipos-mantenimientos", { schema: "login_node" })
+@Entity("tipos-mantenimientos", { schema: "mant_vehi" })
 export class TiposMantenimientos {
   @PrimaryGeneratedColumn({ type: "int", name: "id-tipo" })
   idTipo: number;
@@ -9,6 +9,6 @@ export class TiposMantenimientos {
   @Column("varchar", { name: "nombre", length: 255 })
   nombre: string;
 
-  @OneToOne(() => Mantenimientos, (mantenimientos) => mantenimientos.idTipo)
-  mantenimientos: Mantenimientos;
+  @OneToMany(() => Mantenimientos, (mantenimientos) => mantenimientos.idTipo2)
+  mantenimientos: Mantenimientos[];
 }

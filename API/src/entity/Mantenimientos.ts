@@ -7,10 +7,11 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Vehiculos } from "./Vehiculos";
+import { TiposMantenimientos } from "./TiposMantenimientos";
 
-@Index("id-vehiculo", ["idVehiculo"], {})
-@Index("id-tipo_2", ["idTipo"], {})
-@Entity("mantenimientos", { schema: "login_node" })
+@Index("FK_ID_TIPO", ["idTipo"], {})
+@Index("FK_ID_VEHICULO", ["idVehiculo"], {})
+@Entity("mantenimientos", { schema: "mant_vehi" })
 export class Mantenimientos {
   @PrimaryGeneratedColumn({ type: "int", name: "id-mantenimiento" })
   idMantenimiento: number;
@@ -48,4 +49,12 @@ export class Mantenimientos {
   })
   @JoinColumn([{ name: "id-vehiculo", referencedColumnName: "idVehiculo" }])
   idVehiculo2: Vehiculos;
+
+  @ManyToOne(
+    () => TiposMantenimientos,
+    (tiposMantenimientos) => tiposMantenimientos.mantenimientos,
+    { onDelete: "CASCADE", onUpdate: "CASCADE" }
+  )
+  @JoinColumn([{ name: "id-tipo", referencedColumnName: "idTipo" }])
+  idTipo2: TiposMantenimientos;
 }

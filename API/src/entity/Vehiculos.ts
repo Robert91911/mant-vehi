@@ -11,9 +11,9 @@ import { Mantenimientos } from "./Mantenimientos";
 import { Modelos } from "./Modelos";
 import { Users } from "./Users";
 
-@Index("id-modelo_3", ["idModelo"], {})
-@Index("id-usuario", ["idUsuario"], {})
-@Entity("vehiculos", { schema: "login_node" })
+@Index("FK_ID_MODELO", ["idModelo"], {})
+@Index("FK_ID_USUARIO", ["idUsuario"], {})
+@Entity("vehiculos", { schema: "mant_vehi" })
 export class Vehiculos {
   @PrimaryGeneratedColumn({ type: "int", name: "id-vehiculo" })
   idVehiculo: number;

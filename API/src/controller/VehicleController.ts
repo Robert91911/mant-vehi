@@ -82,23 +82,26 @@ export class VehicleController {
         // All ok
         res.send('Vehicle created');
       };
-    /*
-      static edit = async (req: Request, res: Response) => {
-        let user;
-        const { id } = req.params;
-        const { username, role } = req.body;
     
-        const vehicleRepository = getRepository(Vehicles);
+      static edit = async (req: Request, res: Response) => {
+        let vehicle;
+        const { idVehiculo } = req.params;
+        const { idUsuario, color, matricula, km, imagen} = req.body;
+    
+        const vehicleRepository = getRepository(Vehiculos);
         // Try get user
         try {
-          user = await vehicleRepository.findOneOrFail(id);
-          user.username = username;
-          user.role = role;
+          vehicle = await vehicleRepository.findOneOrFail(idVehiculo);
+          //vehicle.idUsuario = idUsuario
+          //vehicle.color = color;
+          //vehicle.matricula = matricula;
+          vehicle.km = km;
+          vehicle.imagen = imagen;
         } catch (e) {
           return res.status(404).json({ message: 'User not found' });
         }
         const validationOpt = { validationError: { target: false, value: false } };
-        const errors = await validate(user, validationOpt);
+        const errors = await validate(vehicle, validationOpt);
     
         if (errors.length > 0) {
           return res.status(400).json(errors);
@@ -106,13 +109,14 @@ export class VehicleController {
     
         // Try to save user
         try {
-          await vehicleRepository.save(user);
+          await vehicleRepository.save(vehicle);
         } catch (e) {
-          return res.status(409).json({ message: 'Username already in use' });
+          return res.status(409).json({e});
         }
     
-        res.status(201).json({ message: 'User update' });
+        res.status(201).json({ message: 'Vehicle update' });
       };
+      /*
     
       static delete = async (req: Request, res: Response) => {
         const { id } = req.params;

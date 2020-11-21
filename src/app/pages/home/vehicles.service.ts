@@ -15,12 +15,16 @@ export class VehiclesService {
     return this.http.get(`${environment.API_URL}/vehicles/${userId}`);
   }
 
+  getById(vehicleId: number) {
+    return this.http.get(`${environment.API_URL}/vehicles/one/${vehicleId}`);
+  }
+
   saveVehicle(vehiculo : Vehicle) {
     return this.http.post(`${environment.API_URL}/vehicles`, vehiculo);
   }
 
   updateVehicle(id: string|number, updateVehicle: Vehicle) {
-    return this.http.put(`${environment.API_URL}/vehicles/${id}`, updateVehicle);
+    return this.http.patch(`${environment.API_URL}/vehicles/${id}`, updateVehicle);
   }
 
   handlerError(error): Observable<never> {

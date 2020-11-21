@@ -17,12 +17,12 @@ export class VehiculoFormComponent implements OnInit {
   
 
   vehiculo: Vehicle | any = {
-    idVehiculo: 0,
-    idModelo: 0,
-    idUsuario: 0,
+    idVehiculo: null,
+    idModelo: null,
+    idUsuario: null,
     color: '',
     matricula: '',
-    km: 0,
+    km: null,
     imagen: ''
   }
 
@@ -33,7 +33,7 @@ export class VehiculoFormComponent implements OnInit {
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
-      this.vehiculoSrv.getAll(params.id)
+      this.vehiculoSrv.getById(params.id)
       .subscribe(
         res => {
           console.log(res);
@@ -45,10 +45,8 @@ export class VehiculoFormComponent implements OnInit {
     }
   }
 
-
-
   updateVehicle() {
-    console.log("Se está actualizando un vehiculo")
+    //delete this.vehiculo.idUsuario;
     this.vehiculoSrv.updateVehicle(this.vehiculo.idVehiculo, this.vehiculo)
     .subscribe(
       res => {

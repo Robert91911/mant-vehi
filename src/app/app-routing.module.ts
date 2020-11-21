@@ -28,6 +28,8 @@ const routes: Routes = [
   },
   { path: 'mantenimiento/:id', loadChildren: () => import('./pages/mantenimiento/mantenimiento.module').then(m => m.MantenimientoModule) },
   { path: 'vehiculo', loadChildren: () => import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) },
+  { path: 'vehiculo/:id', loadChildren: () => import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) },
+  
 ];
 
 @NgModule({

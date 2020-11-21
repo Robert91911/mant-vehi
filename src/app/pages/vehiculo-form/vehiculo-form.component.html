@@ -3,8 +3,23 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <input type="text" name="title" [(ngModel)]="vehiculo.color" placeholder="Title" class="form-control" autofocus>
+                    <input type="text" name="modelo" [(ngModel)]="vehiculo.idModelo" placeholder="Modelo" class="form-control" autofocus>
                 </div>
+                <div class="form-group">
+                    <input type="text" name="color" [(ngModel)]="vehiculo.color" placeholder="Color" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="matricula" [(ngModel)]="vehiculo.matricula" placeholder="Matrícula" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="kilometros" [(ngModel)]="vehiculo.km" placeholder="kilometros" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="file" name="imagen" [(ngModel)]="vehiculo.imagen" placeholder="Imágen" class="form-control" >
+                </div>
+                <button class="btn btn-success btn-block" (click)="edit ? updateVehicle() : saveNewVehicle()">
+                    Guardar
+                </button>
             </form>
         </div>
     </div>
@@ -12,6 +27,8 @@
 
 <div class="col-md-4">
     <div class="card card-body text-center">
-
+        <!--<img [src]="game.image  == '' ? '/assets/noimage.png' : game.image" class="card-img-top">!-->
+        <h3>{{vehiculo.matricula == '' ? 'Matrícula' : vehiculo.matricula}}</h3>
+        <p>{{vehiculo.km == '' ? 'Km del vehiculo' : vehiculo.km}}</p>
     </div>
 </div>

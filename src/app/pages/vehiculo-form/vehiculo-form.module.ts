@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { VehiculoFormRoutingModule } from './vehiculo-form-routing.module';
 import { VehiculoFormComponent } from './vehiculo-form.component';
@@ -9,7 +10,8 @@ import { VehiculoFormComponent } from './vehiculo-form.component';
   declarations: [VehiculoFormComponent],
   imports: [
     CommonModule,
-    VehiculoFormRoutingModule
+    VehiculoFormRoutingModule,
+    FormsModule
   ]
 })
 export class VehiculoFormModule { }

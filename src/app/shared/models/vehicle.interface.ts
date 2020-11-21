@@ -4,7 +4,7 @@ export interface Vehicle {
     idUsuario: number;
     color: string;
     matricula: string;
-    km: string;
+    km: number;
     imagen: string;
 }
 

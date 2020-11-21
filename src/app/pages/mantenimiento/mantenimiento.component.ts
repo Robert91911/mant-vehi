@@ -1,3 +1,4 @@
+import { HostBinding } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,6 +10,8 @@ import { MantenimientoService } from './../mantenimiento/mantenimiento.service';
   styleUrls: ['./mantenimiento.component.scss']
 })
 export class MantenimientoComponent implements OnInit {
+
+  @HostBinding('class') classes = 'row';
 
   mantenances: any = [];
 

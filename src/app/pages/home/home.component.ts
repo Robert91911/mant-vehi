@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth/auth.service';
 import { VehiclesService } from './../home/vehicles.service';
 import { UserResponse, User, Roles } from '@shared/models/user.interface';
+import { HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ import { UserResponse, User, Roles } from '@shared/models/user.interface';
 
 export class HomeComponent implements OnInit {
   
+  @HostBinding('class') classes = 'row';
   //id_usuario = this.authSvc.userValue.userId;
   
   vehicles: any = [];

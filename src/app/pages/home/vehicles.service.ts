@@ -15,6 +15,14 @@ export class VehiclesService {
     return this.http.get(`${environment.API_URL}/vehicles/${userId}`);
   }
 
+  saveVehicle(vehiculo : Vehicle) {
+    return this.http.post(`${environment.API_URL}/vehicles`, vehiculo);
+  }
+
+  updateVehicle(id: string|number, updateVehicle: Vehicle) {
+    return this.http.put(`${environment.API_URL}/vehicles/${id}`, updateVehicle);
+  }
+
   handlerError(error): Observable<never> {
     let errorMessage = 'Error unknown';
     if (error) {

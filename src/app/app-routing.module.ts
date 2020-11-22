@@ -41,6 +41,7 @@ const routes: Routes = [
   loadChildren: () => 
   import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
   },
+  { path: 'mantenimiento', loadChildren: () => import('./pages/mant-form/mant-form.module').then(m => m.MantFormModule) },
   
 ];
 

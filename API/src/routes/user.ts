@@ -9,9 +9,6 @@ const router = Router();
 // Get all users
 router.get('/', UserController.getAll);
 
-//Get users vehicles
-
-
 // Get one user
 router.get('/:id', [checkJwt, checkRole(['admin'])], UserController.getById);
 

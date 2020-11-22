@@ -19,6 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
   }
+  
   get user$(): Observable<UserResponse> {
     return this.user.asObservable();
   }
@@ -50,7 +51,6 @@ export class AuthService {
 
     if (user) {
       const isExpired = helper.isTokenExpired(user.token);
-
       if (isExpired) {
         this.logout();
       } else {

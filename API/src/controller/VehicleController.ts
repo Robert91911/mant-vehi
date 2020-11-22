@@ -116,24 +116,24 @@ export class VehicleController {
     
         res.status(201).json({ message: 'Vehicle update' });
       };
-      /*
+      
     
       static delete = async (req: Request, res: Response) => {
         const { id } = req.params;
-        const vehicleRepository = getRepository(Vehicles);
-        let user: Vehicles;
+        const vehicleRepository = getRepository(Vehiculos);
+        let vehicle: Vehiculos;
     
         try {
-          user = await vehicleRepository.findOneOrFail(id);
+          vehicle = await vehicleRepository.findOneOrFail(id);
         } catch (e) {
-          return res.status(404).json({ message: 'User not found' });
+          return res.status(404).json({ message: 'Vehicle not found' });
         }
     
         // Remove user
         vehicleRepository.delete(id);
-        res.status(201).json({ message: ' User deleted' });
+        res.status(201).json({ message: ' Vehicle deleted' });
       };
-      */
+      
       
     }
     

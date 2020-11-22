@@ -14,6 +14,7 @@ import { SidebarModule } from '@shared/components/sidebar/sidebar.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AdminInterceptor } from '@shared/interceptors/admin-interceptor';
+import { VehicleInterceptorService } from '@shared/interceptors/vehicle-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -29,6 +30,7 @@ import { AdminInterceptor } from '@shared/interceptors/admin-interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: VehicleInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent],
 })

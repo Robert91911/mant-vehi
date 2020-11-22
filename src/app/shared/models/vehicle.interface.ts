@@ -7,7 +7,3 @@ export interface Vehicle {
     km: number;
     imagen: string;
 }
-
-export interface VehicleResponse extends Vehicle {
-    vehiculos: Array<number>;
-  }

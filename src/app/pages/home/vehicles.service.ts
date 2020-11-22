@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { Vehicle, VehicleResponse } from '@app/shared/models/vehicle.interface'
+import { Vehicle} from '@app/shared/models/vehicle.interface'
 
 @Injectable({
   providedIn: 'root'

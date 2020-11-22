@@ -85,13 +85,13 @@ export class VehicleController {
     
       static edit = async (req: Request, res: Response) => {
         let vehicle;
-        const { idVehiculo } = req.params;
+        const { id } = req.params;
         const { idUsuario, color, matricula, km, imagen} = req.body;
     
         const vehicleRepository = getRepository(Vehiculos);
         // Try get user
         try {
-          vehicle = await vehicleRepository.findOneOrFail(idVehiculo);
+          vehicle = await vehicleRepository.findOneOrFail(id);
           //vehicle.idUsuario = idUsuario
           //vehicle.color = color;
           //vehicle.matricula = matricula;

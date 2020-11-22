@@ -27,6 +27,10 @@ export class VehiclesService {
     return this.http.patch(`${environment.API_URL}/vehicles/${id}`, updateVehicle);
   }
 
+  deleteVehicle(id: string) {
+    return this.http.delete(`${environment.API_URL}/vehicles/${id}`);
+  }
+
   handlerError(error): Observable<never> {
     let errorMessage = 'Error unknown';
     if (error) {

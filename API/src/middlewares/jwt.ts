@@ -7,7 +7,6 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   let jwtPayload;
 
   try {
-    console.log(token)
     jwtPayload = <any>jwt.verify(token, config.jwtSecret);
     res.locals.jwtPayload = jwtPayload;
   } catch (e) {

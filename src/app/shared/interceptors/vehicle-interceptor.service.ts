@@ -15,7 +15,7 @@ export class VehicleInterceptorService implements HttpInterceptor {
   constructor(private authSvc: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    if (req.url.includes('home')) {
+    if (!req.url.includes('login')) {
       console.log("Interceptor")
       const userValue = this.authSvc.userValue;
       const authReq = req.clone({

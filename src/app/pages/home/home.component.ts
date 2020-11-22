@@ -34,4 +34,14 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  deleteVehicle(id: string) {
+    this.vehicleSvc.deleteVehicle(id).subscribe(
+      res => {
+        console.log(res);
+        this.getAll();
+      },
+      err => console.log(err)
+    )
+  }
+
   }

@@ -1,26 +1,26 @@
-<div class="colm-md-4" *ngFor="let mantenance of mantenances">
+<div class="colm-md-4" *ngFor="let mantenimiento of mantenimientos">
 
     <div class="card text-center">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            {{mantenance.nombre}}
+            {{mantenimiento.nombre}}
             <div>
                 <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
             </div>
 
         </div>
         <div class="card-body">
-            <p>Importe: {{mantenance.importe}}</p>
-            <p>Creado: {{mantenance.fechaCreacion}}</p>
-            <p>Km: {{mantenance.kmMant}}</p>
-            <p>Ubicación: {{mantenance.ubicacion}}</p>
-            <p>Teller: {{mantenance.taller}}</p>
+            <p>Importe: {{mantenimiento.importe}}</p>
+            <p>Creado: {{mantenimiento.fechaCreacion}}</p>
+            <p>Km: {{mantenimiento.kmMant}}</p>
+            <p>Ubicación: {{mantenimiento.ubicacion}}</p>
+            <p>Teller: {{mantenimiento.taller}}</p>
         </div>
         <div class="card-body">
             <p></p>
   
-              <a [routerLink]="['/mantenimiento']" class="btn btn-info btn-block">
-                  EDITAR MANTENIMIENTOS
-              </a>
+              <a [routerLink]="['/mantenimiento', mantenimiento.idMantenimiento]"  class="btn btn-info btn-block">
+                EDITAR MANTENIMIENTO
+            </a>
         </div>
     </div>
   
@@ -35,7 +35,7 @@
         </div>
         <div class="card-body">
   
-              <a [routerLink]="['/mantenimiento']"  class="btn btn-info btn-block">
+              <a [routerLink]="['/mantenimiento']" (click)="saveVehicleId(idVehiculo)" class="btn btn-info btn-block">
                   AÑADIR
               </a>
         </div>

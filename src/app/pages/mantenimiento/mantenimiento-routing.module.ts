@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MantenimientoComponent } from './mantenimiento.component';
+import { MantenimientoComponent } from './home/mantenimiento.component';
 
 const routes: Routes = [{ path: '', component: MantenimientoComponent }];
 
@@ -10,3 +10,4 @@ const routes: Routes = [{ path: '', component: MantenimientoComponent }];
   exports: [RouterModule]
 })
 export class MantenimientoRoutingModule { }
+ 

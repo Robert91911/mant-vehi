@@ -27,21 +27,30 @@ const routes: Routes = [
     canActivate: [CheckLoginGuard],
   },
   {
-     path: 'mantenimiento/:id',
+     path: 'mantenimientos/:id',
     loadChildren: () => 
-      import('./pages/mantenimiento/mantenimiento.module').then(m => m.MantenimientoModule) 
+      import('./pages/mantenimiento/home/mantenimiento.module').then(m => m.MantenimientoModule) 
   },
   {
      path: 'vehiculo', 
-  loadChildren: () => 
-    import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
+    loadChildren: () => 
+      import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
   },
   {
      path: 'vehiculo/:id', 
-  loadChildren: () => 
-  import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
+    loadChildren: () => 
+      import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
   },
-  { path: 'mantenimiento', loadChildren: () => import('./pages/mant-form/mant-form.module').then(m => m.MantFormModule) },
+  { path: 'mantenimiento', 
+    loadChildren: () => 
+      import('./pages/mantenimiento/form/form.module').then(m => m.FormModule) 
+  },
+  { 
+    path: 'mantenimiento/:id', 
+    loadChildren: () => 
+      import('./pages/mantenimiento/form/form.module').then(m => m.FormModule) 
+},
+      
   
 ];
 

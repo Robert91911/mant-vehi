@@ -1,0 +1,52 @@
+<div class="col-md-4 offset-md-2">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <input type="text" name="idVehiculo" [(ngModel)]="mantenimiento.idVehiculo" placeholder="Vehiculo" class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="idtipo" [(ngModel)]="mantenimiento.idTipo" placeholder="Tipo mantenimiento" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nombre" [(ngModel)]="mantenimiento.nombre" placeholder="Nombre o nota" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="importe" [(ngModel)]="mantenimiento.importe" placeholder="Importe del mantenimiento" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="fechaCreacion" [(ngModel)]="mantenimiento.fechaCreacion" placeholder="Fecha de creación" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="kmMant" [(ngModel)]="mantenimiento.kmMant" placeholder="Km que tiene el coche" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="ubicacion" [(ngModel)]="mantenimiento.ubicacion" placeholder="Ubicacion del mantenimiento" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="taller" [(ngModel)]="mantenimiento.taller" placeholder="Taller" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="file" name="factura" [(ngModel)]="mantenimiento.factura" placeholder="Factura" class="form-control" >
+                </div>
+                <button class="btn btn-success btn-block" (click)="edit ? updateMant() : saveNewMant()">
+                    Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card card-body text-center">
+        <!--<img [src]="game.image  == '' ? '/assets/noimage.png' : game.image" class="card-img-top">!-->
+        <h3>{{mantenimiento.idTipo == '' ? 'Tipo' : mantenimiento.idTipo}}</h3>
+        <p>{{mantenimiento.nombre == '' ? 'Nombre' : mantenimiento.nombre}}</p>
+        <p>{{mantenimiento.importe == '' ? 'Importe' : mantenimiento.importe}}</p>
+        <p>{{mantenimiento.fechaCreacion == '' ? 'Fecha de creación' : mantenimiento.fechaCreacion}}</p>
+        <p>{{mantenimiento.kmMant == '' ? 'Km al hacer el mantenimiento' : mantenimiento.kmMant}}</p>
+        <p>{{mantenimiento.ubicacion == '' ? 'Ubicación' : mantenimiento.ubicacion}}</p>
+        <p>{{mantenimiento.taller == '' ? 'Taller' : mantenimiento.taller}}</p>
+        <p>{{mantenimiento.factura == '' ? 'Factura' : mantenimiento.factura}}</p>
+    </div>
+</div>

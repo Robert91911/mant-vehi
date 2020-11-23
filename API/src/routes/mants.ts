@@ -12,11 +12,8 @@ router.get('/one/:id', [checkJwt] , MantsController.getById);
 // Get vehicle maintenance
 router.get('/:id', MantsController.getVehicleMants);
 
-// Get all maintenance
-
-
 // Delete maintenance
-
+router.delete('/:id', [checkJwt],  MantsController.delete);
 
 // Create vehicle
 router.post('/', [checkJwt],  MantsController.new);

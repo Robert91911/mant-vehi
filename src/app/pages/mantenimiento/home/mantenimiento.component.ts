@@ -34,6 +34,16 @@ export class MantenimientoComponent implements OnInit {
     );
   }
 
+  deleteVehicle(id: string) {
+    this.mantsSvc.deleteMant(id).subscribe(
+      res => {
+        console.log(res);
+        this.getAll();
+      },
+      err => console.log(err)
+    )
+  }
+
   saveVehicleId(id: number){
     localStorage.setItem('idVehiculo', JSON.stringify(id));
   }

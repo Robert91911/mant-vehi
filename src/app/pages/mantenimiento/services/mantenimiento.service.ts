@@ -28,6 +28,10 @@ export class MantenimientoService {
     return this.http.post(`${environment.API_URL}/mants`, vehiculo);
   }
 
+  deleteMant(id: string) {
+    return this.http.delete(`${environment.API_URL}/mants/${id}`);
+  }
+
   handlerError(error): Observable<never> {
     let errorMessage = 'Error unknown';
     if (error) {

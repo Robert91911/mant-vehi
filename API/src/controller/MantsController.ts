@@ -100,6 +100,22 @@ export class MantsController {
     res.status(201).json({ message: 'Maintenance update' });
   };
 
+  static delete = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const vehicleRepository = getRepository(Mantenimientos);
+    let mantenimiento: Mantenimientos;
+
+    try {
+      mantenimiento = await vehicleRepository.findOneOrFail(id);
+    } catch (e) {
+      return res.status(404).json({ message: 'Maintenance not found' });
+    }
+
+    // Remove user
+    vehicleRepository.delete(id);
+    res.status(201).json({ message: ' Maintenance deleted' });
+  };
+
 }
 
 

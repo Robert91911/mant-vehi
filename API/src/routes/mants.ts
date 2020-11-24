@@ -6,16 +6,20 @@ import MantsController from '../controller/MantsController';
 
 const router = Router();
 
-// Get a maintenance
+// Get a vehicle
+router.get('/one/:id', [checkJwt] , MantsController.getById);
+
+// Get vehicle maintenance
 router.get('/:id', MantsController.getVehicleMants);
 
-// Get all maintenance
-
 // Delete maintenance
+router.delete('/:id', [checkJwt],  MantsController.delete);
 
-// Create maintenance
+// Create vehicle
+router.post('/', [checkJwt],  MantsController.new);
 
-// Edit maintenance
+// Edit vehicle
+router.patch('/:id', [checkJwt],  MantsController.edit);
 
 
 export default router;

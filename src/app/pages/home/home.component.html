@@ -1,44 +1,49 @@
+<div class="d-flex flex-wrap justify-content-center componente">
 
-<div class="colm-md-4" *ngFor="let vehicle of vehicles">
+  <div class="colm-md-2 tarjeta " *ngFor="let vehicle of vehicles">
 
-  <div class="card text-center">
+    <div class="card text-center">
       <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-          MATRICULA: {{vehicle.matricula}}
-          <div>
-            <button class="btn btn-danger" (click)="deleteVehicle(vehicle.idVehiculo)" ><i class="far fa-trash-alt"></i></button>
-          </div>
-          
-      </div>
-      
-      <div class="card-body">
-          <p>Color: {{vehicle.color}}</p>
-          <p>Modelo: {{vehicle.idModelo}}</p>
-          <p>Km del vehículo: {{vehicle.km}}</p>
+        MATRICULA: {{vehicle.matricula}}
+        <div>
+          <button class="btn btn-danger" (click)="deleteVehicle(vehicle.idVehiculo)"><i
+              class="far fa-trash-alt"></i></button>
+        </div>
 
-            <a [routerLink]="['/mantenimiento', vehicle.idVehiculo]"  class="btn btn-info btn-block">
-                VER MANTENIMIENTOS
-            </a>
-            <a [routerLink]="['/vehiculo', vehicle.idVehiculo]"  class="btn btn-info btn-block">
-              EDITAR VEHICULO
-          </a>
       </div>
+
+      <div class="card-body">
+        <p>Color: {{vehicle.color}}</p>
+        <p>Modelo: {{vehicle.idModelo}}</p>
+        <p>Km del vehículo: {{vehicle.km}}</p>
+        <img src="../../../assets/noimage.png" alt="">
+
+        <a [routerLink]="['/mantenimientos', vehicle.idVehiculo]" class="btn btn-info btn-block">
+          VER MANTENIMIENTOS
+        </a>
+        <a [routerLink]="['/vehiculo', vehicle.idVehiculo]" class="btn btn-info btn-block">
+          EDITAR VEHICULO
+        </a>
+      </div>
+    </div>
+
   </div>
 
-</div>
+  <div class="colm-md-2 tarjeta">
 
-<div class="colm-md-4">
-
-  <div class="card text-center">
+    <div class="card text-center">
       <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-          Añadir nuevo vehiculo
-          
+        Añadir nuevo vehiculo
+
       </div>
       <div class="card-body">
 
-            <a [routerLink]="['/vehiculo']"  class="btn btn-info btn-block">
-                AÑADIR
-            </a>
+        <a [routerLink]="['/vehiculo']" class="btn btn-info btn-block">
+          AÑADIR
+        </a>
       </div>
+    </div>
+
   </div>
 
 </div>

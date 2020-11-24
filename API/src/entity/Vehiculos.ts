@@ -33,8 +33,8 @@ export class Vehiculos {
   @Column("bigint", { name: "km" })
   km: string;
 
-  @Column("text", { name: "imagen" })
-  imagen: string;
+  @Column("mediumblob", { name: "imagen" })
+  imagen: Buffer;
 
   @OneToMany(
     () => Mantenimientos,

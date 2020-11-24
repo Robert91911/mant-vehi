@@ -12,7 +12,6 @@ import { HostBinding } from '@angular/core';
 
 export class HomeComponent implements OnInit {
   
-  @HostBinding('class') classes = 'row';
   //id_usuario = this.authSvc.userValue.userId;
   
   vehicles: any = [];

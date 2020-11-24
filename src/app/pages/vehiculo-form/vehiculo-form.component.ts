@@ -11,7 +11,7 @@ import { VehiclesService } from '../home/vehicles.service';
 })
 export class VehiculoFormComponent implements OnInit {
 
-  @HostBinding('class') classes = 'row';
+  //@HostBinding('class') classes = 'row';
   
   vehiculo: Vehicle | any = {
     idVehiculo: null,
@@ -20,7 +20,7 @@ export class VehiculoFormComponent implements OnInit {
     color: '',
     matricula: '',
     km: null,
-    imagen: ''
+    imagen: null
   }
 
   edit: boolean = false;
@@ -70,6 +70,13 @@ export class VehiculoFormComponent implements OnInit {
       },
       err => console.log(err)
     )
+  }
+
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.vehiculo.imagen = file;
+    }
   }
 
 }

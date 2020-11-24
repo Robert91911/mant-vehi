@@ -2,7 +2,7 @@ import { HostBinding } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { MantenimientoService } from './../mantenimiento/mantenimiento.service';
+import { MantenimientoService } from '../services/mantenimiento.service';
 
 @Component({
   selector: 'app-mantenimiento',
@@ -13,7 +13,9 @@ export class MantenimientoComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
 
-  mantenances: any = [];
+  mantenimientos: any = [];
+
+  idVehiculo: number;
 
   constructor( private mantsSvc: MantenimientoService, private activatedRoute: ActivatedRoute) { }
 
@@ -25,10 +27,26 @@ export class MantenimientoComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     this.mantsSvc.getAll(params.id).subscribe(
       res => {
-        this.mantenances = res;
+        this.idVehiculo = params.id
+        this.mantenimientos = res;
       },
       err => console.log(err)
     );
   }
 
+  deleteVehicle(id: string) {
+    this.mantsSvc.deleteMant(id).subscribe(
+      res => {
+        console.log(res);
+        this.getAll();
+      },
+      err => console.log(err)
+    )
+  }
+
+  saveVehicleId(id: number){
+    localStorage.setItem('idVehiculo', JSON.stringify(id));
+  }
+
 }
+

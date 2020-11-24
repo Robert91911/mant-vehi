@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 import { AuthService } from '@auth/auth.service';
 import { takeUntil } from 'rxjs/operators';
 import { Roles } from '@app/shared/models/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @Output() toggleSidenav = new EventEmitter<void>();
 
-  constructor(private authSvc: AuthService) {}
+  constructor(private authSvc: AuthService, public router: Router ) {}
 
   ngOnInit(): void {
     this.authSvc.user$

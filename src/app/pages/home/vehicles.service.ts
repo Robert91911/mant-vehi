@@ -30,6 +30,7 @@ export class VehiclesService {
   deleteVehicle(id: string) {
     return this.http.delete(`${environment.API_URL}/vehicles/${id}`);
   }
+  
 
   handlerError(error): Observable<never> {
     let errorMessage = 'Error unknown';

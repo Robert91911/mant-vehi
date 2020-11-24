@@ -3,6 +3,7 @@ import { AuthService } from '@auth/auth.service';
 import { VehiclesService } from './../home/vehicles.service';
 import { UserResponse, User, Roles } from '@shared/models/user.interface';
 import { HostBinding } from '@angular/core';
+import { BrandService } from '@shared/services/brand.service'
 
 @Component({
   selector: 'app-home',
@@ -16,12 +17,16 @@ export class HomeComponent implements OnInit {
   
   vehicles: any = [];
 
-  constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService) { }
+  brand: any = [];
+
+  constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService, private brandSrv: BrandService ) { }
 
   ngOnInit(): void {
     this.getAll();
   }
   
+  
+
   getAll() {
     const id_usuario = JSON.parse(localStorage.getItem('user')) || null;
     console.log(id_usuario.userId)

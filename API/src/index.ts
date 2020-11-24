@@ -11,6 +11,11 @@ createConnection()
   .then(async () => {
     // create express app
     const app = express();
+
+    const multer = require('multer');
+    var cors = require('cors');
+    var fileExtension = require('file-extension')
+    
     // Middlewares
     app.use(cors());
     app.use(helmet());

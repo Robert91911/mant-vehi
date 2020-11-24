@@ -22,7 +22,7 @@ export class MantenimientoComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
   }
-  
+
   getAll() {
     const params = this.activatedRoute.snapshot.params;
     this.mantsSvc.getAll(params.id).subscribe(

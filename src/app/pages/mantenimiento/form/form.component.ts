@@ -11,8 +11,6 @@ import { Mantenimiento } from '@shared/models/mant.interface'
 })
 export class FormComponent implements OnInit {
 
-  @HostBinding('class') classes = 'row';
-
   mantenimiento: Mantenimiento | any = {
     idMantenimiento: null,
     idVehiculo: null,

@@ -1,5 +1,10 @@
-<div class="col-md-4 offset-md-2">
+<div class="d-flex flex-wrap justify-content-center">
+
+<div class="colm-md-4 tarjeta" >
     <div class="card">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            EDITAR VEHICULO
+        </div>
         <div class="card-body">
             <form>
                 <div class="form-group">
@@ -37,7 +42,10 @@
     </div>
 </div>
 
-<div class="col-md-4">
+<div class="colm-md-4 tarjeta">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        PREVISUALIZACIÓN VEHICULO
+    </div>
     <div class="card card-body text-center">
         <!--<img [src]="game.image  == '' ? '/assets/noimage.png' : game.image" class="card-img-top">!-->
         <h3>{{mantenimiento.idTipo == '' ? 'Tipo' : mantenimiento.idTipo}}</h3>
@@ -49,4 +57,5 @@
         <p>{{mantenimiento.taller == '' ? 'Taller' : mantenimiento.taller}}</p>
         <p>{{mantenimiento.factura == '' ? 'Factura' : mantenimiento.factura}}</p>
     </div>
+</div>
 </div>

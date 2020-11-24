@@ -5,5 +5,5 @@ export interface Vehicle {
     color: string;
     matricula: string;
     km: number;
-    imagen: string;
+    imagen: File;
 }

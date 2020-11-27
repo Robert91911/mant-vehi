@@ -116,8 +116,6 @@ export class MantsController {
     res.status(201).json({ message: ' Maintenance deleted' });
   };
 
-  
-
 }
 
 

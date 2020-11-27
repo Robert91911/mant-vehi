@@ -5,9 +5,7 @@ import vehicle from './vehicles';
 import mant from './mants'
 import marcas from './marcas'
 import modelos  from './modelos'
-
 import router from './auth';
-
 
 const routes = Router();
 

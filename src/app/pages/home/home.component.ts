@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth/auth.service';
-import { VehiclesService } from './../home/vehicles.service';
+import { VehiclesService } from './services/vehicles.service';
 import { UserResponse, User, Roles } from '@shared/models/user.interface';
 import { HostBinding } from '@angular/core';
 import { BrandService } from '@shared/services/brand.service'
@@ -19,13 +19,24 @@ export class HomeComponent implements OnInit {
 
   brand: any = [];
 
+  brandName: String;
+
   constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService, private brandSrv: BrandService ) { }
 
   ngOnInit(): void {
     this.getAll();
   }
   
-  
+  getMarca(id_vehiculo) {
+    const id_usuario = JSON.parse(localStorage.getItem('user')) || null;
+    console.log(id_usuario.userId)
+    this.brandSrv.getMarca(id_vehiculo).subscribe(
+      res => {
+        this.vehicles = res;
+      },
+      err => console.log(err)
+    );
+  }
 
   getAll() {
     const id_usuario = JSON.parse(localStorage.getItem('user')) || null;

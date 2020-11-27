@@ -10,7 +10,7 @@ const router = Router();
 router.get('/one/:id', [checkJwt] , MantsController.getById);
 
 // Get vehicle maintenance
-router.get('/:id', MantsController.getVehicleMants);
+router.get('/:id', [checkJwt] ,  MantsController.getVehicleMants);
 
 // Delete maintenance
 router.delete('/:id', [checkJwt],  MantsController.delete);

@@ -9,8 +9,10 @@ import { Mantenimiento } from '@shared/models/mant.interface'
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
+
 export class FormComponent implements OnInit {
 
+  //Creamos un objeto de tipo mantenimiento, el modelo se importa de su propia interfaz
   mantenimiento: Mantenimiento | any = {
     idMantenimiento: null,
     idVehiculo: null,
@@ -24,34 +26,12 @@ export class FormComponent implements OnInit {
     taller: "",
   }
 
+  //Variable para saber si estamos editando o guardando uno nuevo
   edit: boolean = false;
 
   constructor(private mantSrv: MantenimientoService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
-  updateMant() {
-    this.mantSrv.updateMant(this.mantenimiento.idMantenimiento, this.mantenimiento)
-    .subscribe(
-      res => {
-        this.router.navigate(['/'])
-      },
-      err => console.log(err)
-    )
-  }
-
-  saveNewMant() {
-    //delete this.mantenimiento.idVehiculo;
-    console.log(this.mantenimiento)
-    this.mantSrv.saveMant(this.mantenimiento)
-    .subscribe(
-      res => {
-        console.log(res);
-        localStorage.removeItem('idVehiculo');
-        this.router.navigate(['/'])
-      },
-      err => console.log(err)
-    )
-  }
-
+  //Al iniciar se recupera del almacenamineto el id del vehiculo que es el mantenimiento y se cargan los datos, solo si es editar
   ngOnInit(): void {
     const idVehiculo = JSON.parse(localStorage.getItem('idVehiculo')) || null;
     this.mantenimiento.idVehiculo = idVehiculo
@@ -67,5 +47,33 @@ export class FormComponent implements OnInit {
       )
     }
   }
+
+  //Metodo de actualizacion del objeto
+  updateMant() {
+    this.mantSrv.updateMant(this.mantenimiento.idMantenimiento, this.mantenimiento)
+    .subscribe(
+      res => {
+        this.router.navigate(['/'])
+      },
+      err => console.log(err)
+    )
+  }
+
+  //Metodo de guardado del objeto
+  saveNewMant() {
+    //delete this.mantenimiento.idVehiculo;
+    console.log(this.mantenimiento)
+    this.mantSrv.saveMant(this.mantenimiento)
+    .subscribe(
+      res => {
+        console.log(res);
+        localStorage.removeItem('idVehiculo');
+        this.router.navigate(['/'])
+      },
+      err => console.log(err)
+    )
+  }
+
+
 
 }

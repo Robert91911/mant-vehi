@@ -34,12 +34,12 @@ const routes: Routes = [
   {
      path: 'vehiculo', 
     loadChildren: () => 
-      import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
+      import('./pages/home/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
   },
   {
      path: 'vehiculo/:id', 
     loadChildren: () => 
-      import('./pages/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
+      import('./pages/home/vehiculo-form/vehiculo-form.module').then(m => m.VehiculoFormModule) 
   },
   { path: 'mantenimiento', 
     loadChildren: () => 

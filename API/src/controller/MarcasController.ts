@@ -4,6 +4,11 @@ import { Marca } from '../entity/Marca'
 import { validate } from 'class-validator';
 
 export class MarcasController {
+
+    static getOne(arg0: string, getOne: any) {
+        throw new Error('Method not implemented.');
+    }
+    
     static getAll = async (req: Request, res: Response) => {
       
         const vehicleRepository = getRepository(Marca);

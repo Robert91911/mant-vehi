@@ -13,16 +13,19 @@ export class MantenimientoComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
 
+  //Array de los mantenimientos
   mantenimientos: any = [];
-
+  //Id del vehiculo que se le pasa por parámetro desde home (cuando se pulsa en un vehiculo)
   idVehiculo: number;
 
   constructor( private mantsSvc: MantenimientoService, private activatedRoute: ActivatedRoute) { }
 
+  //Cuamdo se inicia el componente primero llama al método para obtener todos los mantenimientos
   ngOnInit(): void {
     this.getAll();
   }
 
+  //Metodo que trae todos los mantenimientos (llama al método getAll desde el servicio)
   getAll() {
     const params = this.activatedRoute.snapshot.params;
     this.mantsSvc.getAll(params.id).subscribe(
@@ -34,6 +37,7 @@ export class MantenimientoComponent implements OnInit {
     );
   }
 
+  //Borra un vehiculo, recibe su id por parámetro
   deleteVehicle(id: string) {
     this.mantsSvc.deleteMant(id).subscribe(
       res => {
@@ -44,6 +48,7 @@ export class MantenimientoComponent implements OnInit {
     )
   }
 
+  //Guarda el vehiculo en el almacenamiento local del navegador
   saveVehicleId(id: number){
     localStorage.setItem('idVehiculo', JSON.stringify(id));
   }

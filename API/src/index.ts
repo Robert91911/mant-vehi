@@ -9,22 +9,22 @@ const PORT = process.env.PORT || 3000;
 
 createConnection()
   .then(async () => {
-    // create express app
+    // Creamos la app expresas
     const app = express();
 
-    const multer = require('multer');
+    // Inicializamos cors
     var cors = require('cors');
-    var fileExtension = require('file-extension')
     
     // Middlewares
     app.use(cors());
     app.use(helmet());
 
     app.use(express.json());
-    // Routes
+
+    // Rutas
     app.use('/', routes);
 
-    // start express server
+    // Arrancamos el servidor express
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch(error => console.log(error));

@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Vehicle } from '@shared/models/vehicle.interface';
 
-import { VehiclesService } from '../home/vehicles.service';
+import { VehiclesService } from './../services/vehicles.service';
  
 @Component({
   selector: 'app-vehiculo-form',

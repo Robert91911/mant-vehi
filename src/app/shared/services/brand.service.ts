@@ -17,6 +17,10 @@ export class BrandService {
     return this.http.get(`${environment.API_URL}/brand`);
   }
 
+  getMarca(idMarca) {
+    return this.http.get(`${environment.API_URL}/brand/one/${idMarca}`);
+  }
+
    handlerError(error): Observable<never> {
     let errorMessage = 'Error unknown';
     if (error) {

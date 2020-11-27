@@ -11,7 +11,7 @@ export class VehicleController {
       let users;
 
       try {
-        users = await vehicleRepository.find({ where: {idUsuario: id} });
+        users = await vehicleRepository.find({ where: {idUsuario: id} , relations: ["idModelo2"], });
       } catch (e) {
         res.status(404).json({ message: 'Somenthing goes wrong!' });
       }
@@ -29,8 +29,7 @@ export class VehicleController {
         let vehiculos;
         
         try {
-          vehiculos = await vehicleRepository.find({ select: ['idVehiculo', 'idModelo' , 'color', 'km', 'idUsuario2'] }, 
-          );
+          vehiculos = await vehicleRepository.find({ relations: ["idModelo2"] });
             
         } catch (e) {
           res.status(404).json({ message: 'Somenthing goes wrong!' });
@@ -48,7 +47,7 @@ export class VehicleController {
         const { id } = req.params;
         const vehicleRepository = getRepository(Vehiculos);
         try {
-          const vehiculo = await vehicleRepository.findOneOrFail(id);
+          const vehiculo = await vehicleRepository.findOneOrFail({ where: {idVehiculo: id} , relations: ["idModelo2"] });
           res.send(vehiculo);
         } catch (e) {
           res.status(404).json({ message: 'Not result' });

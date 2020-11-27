@@ -1,3 +1,5 @@
+import { Model } from './model.interface';
+
 export interface Vehicle {
     idVehiculo: number;
     idModelo: number;
@@ -8,4 +10,5 @@ export interface Vehicle {
     imagen: Blob;
     nombreModelo: String;
     nombreMarca: String;
+    modeloObj: Model;
 }

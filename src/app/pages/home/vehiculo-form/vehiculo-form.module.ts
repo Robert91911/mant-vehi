@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 import { VehiculoFormRoutingModule } from './vehiculo-form-routing.module';
 import { VehiculoFormComponent } from './vehiculo-form.component';
@@ -11,7 +12,8 @@ import { VehiculoFormComponent } from './vehiculo-form.component';
   imports: [
     CommonModule,
     VehiculoFormRoutingModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ]
 })
 export class VehiculoFormModule { }

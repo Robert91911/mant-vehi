@@ -8,6 +8,6 @@ const router = Router();
 // Get all brans
 router.get('/' , MarcasController.getAll);
 
-router.get('/one/:id' , MarcasController.getOne);
+router.get('/one/:id' , MarcasController.getById);
 
 export default router;

@@ -18,7 +18,7 @@ export class BrandService {
   }
 
   getMarca(idMarca) {
-    return this.http.get(`${environment.API_URL}/brand/one/${idMarca}`);
+    return this.http.get(`${environment.API_URL}/vehicles/one/${idMarca}`);
   }
 
    handlerError(error): Observable<never> {

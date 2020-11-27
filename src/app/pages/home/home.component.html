@@ -13,12 +13,10 @@
       </div>
 
       <div class="card-body">
-        <p >Marca: {{vehicle.idModelo}}</p>
+        <p>Modelo: {{vehicle.idModelo2.nombre}}</p>
         <p>Color: {{vehicle.color}}</p>
-        <p>Marca: {{brandName}}</p>
-        <p>Modelo: {{vehicle.idModelo}}</p>
         <p>Km del vehículo: {{vehicle.km}} Km</p>
-        <img src="../../../assets/vocho.jpg" alt="Una imagen que se muestra un coche, concretamente un vocho">
+        <img src="../../../assets/vocho.jpg" alt="Un coche, concretamente un vocho, en dibujo simple">
 
         <a [routerLink]="['/mantenimientos', vehicle.idVehiculo]" class="btn btn-info btn-block">
           VER MANTENIMIENTOS

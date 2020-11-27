@@ -11,7 +11,7 @@ export class ModeloController {
         let modelos;
   
         try {
-            modelos = await vehicleRepository.find({ where: {idMarca: id} });
+            modelos = await vehicleRepository.find({ where: {idModelo: id} });
         } catch (e) {
           res.status(404).json({ message: 'Somenthing goes wrong!' });
         }

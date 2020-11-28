@@ -4,19 +4,21 @@ import { Router } from '@angular/router';
 import { BaseFormUser } from '@shared/utils/base-form-user';
 import { AuthService } from '@auth/auth.service';
 import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
   hide = true;
   private subscription: Subscription = new Subscription();
 
   constructor(
     private authSvc: AuthService,
     private router: Router,
-    public loginForm: BaseFormUser
+    public loginForm: BaseFormUser,
   ) {}
 
   ngOnInit(): void {

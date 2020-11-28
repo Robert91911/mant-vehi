@@ -8,6 +8,7 @@ import { BrandService } from '@shared/services/brand.service'
 import { ModelService } from '@shared/services/model.service'
 import { Model } from '@shared/models/model.interface'
 import { Vehicle } from '@app/shared/models/vehicle.interface';
+import { AlertService } from '../_alert';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +17,15 @@ import { Vehicle } from '@app/shared/models/vehicle.interface';
 })
 
 export class HomeComponent implements OnInit {
-  
+  options = {
+    autoClose: false,
+    keepAfterRouteChange: false
+  };
   //id_usuario = this.authSvc.userValue.userId;
   
   vehicles: Vehicle | any;
 
-  constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService, private brandSrv: BrandService, private modelSrv: ModelService ) { }
+  constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService, private brandSrv: BrandService, private modelSrv: ModelService, public alertService: AlertService) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -42,6 +46,7 @@ export class HomeComponent implements OnInit {
     this.vehicleSvc.deleteVehicle(id).subscribe(
       res => {
         console.log(res);
+        this.alertService.warn("Vehiculo eliminado", this.options)
         this.getAll();
       },
       err => console.log(err)

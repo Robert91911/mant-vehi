@@ -60,7 +60,7 @@ const routes: Routes = [
     loadChildren: () => 
       import('./pages/mantenimiento/form/form.module').then(m => m.FormModule) ,
       canActivate: [CheckLoguedGuard],
-},
+  },
       
   
 ];

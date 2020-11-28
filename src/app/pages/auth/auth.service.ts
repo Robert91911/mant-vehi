@@ -7,6 +7,7 @@ import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { UserResponse, User, Roles } from '@shared/models/user.interface';
 import { catchError, map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AlertService } from '@app/pages/_alert';
 
 const helper = new JwtHelperService();
 
@@ -14,9 +15,15 @@ const helper = new JwtHelperService();
   providedIn: 'root',
 })
 export class AuthService {
+
+  options = {
+    autoClose: false,
+    keepAfterRouteChange: false
+  };
+
   public user = new BehaviorSubject<UserResponse>(null);
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, public alertService: AlertService) {
     this.checkToken();
   }
   
@@ -68,9 +75,9 @@ export class AuthService {
   private handlerError(err): Observable<never> {
     let errorMessage = 'An errror occured retrienving data';
     if (err) {
-      errorMessage = `Error: code ${err.message}`;
+      //errorMessage = `Error: code ${err.message}`;
+      this.alertService.error(err.error.message, this.options)
     }
-    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 }

@@ -8,10 +8,12 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <input type="text" name="idVehiculo" [(ngModel)]="mantenimiento.idVehiculo" placeholder="Vehiculo" class="form-control" autofocus>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="idtipo" [(ngModel)]="mantenimiento.idTipo" placeholder="Tipo mantenimiento" class="form-control" >
+                    <mat-label>Elije el modelo:</mat-label>
+                    <mat-select [(ngModel)]="mantenimiento.idTipo" name="tipes">
+                        <mat-option *ngFor="let tipo of tipos" [value]="tipo.idTipo">
+                        {{tipo.nombre}}
+                        </mat-option>
+                    </mat-select>
                 </div>
                 <div class="form-group">
                     <input type="text" name="nombre" [(ngModel)]="mantenimiento.nombre" placeholder="Nombre o nota" class="form-control" >
@@ -34,7 +36,7 @@
                 <div class="form-group">
                     <input type="file" name="factura" [(ngModel)]="mantenimiento.factura" placeholder="Factura" class="form-control" >
                 </div>
-                <button class="btn btn-success btn-block" (click)="edit ? updateMant() : saveNewMant()">
+                <button class="btn btn-success btn-block" (click)="edit ? updateMant() : saveNewMant()" [routerLink]="['/mantenimientos', mantenimiento.idVehiculo]">
                     Guardar
                 </button>
             </form>

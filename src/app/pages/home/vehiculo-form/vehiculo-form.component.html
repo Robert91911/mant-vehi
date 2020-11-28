@@ -5,7 +5,7 @@
                 <form>
                     <div class="form-group">
                         <mat-label>Elije el modelo:</mat-label>
-                        <mat-select [(ngModel)]="vehiculo.idModelo" name="brand">
+                        <mat-select [(ngModel)]="vehiculo.idModelo" name="brand" (ngModelChange)="getModel($event)">
                             <mat-option *ngFor="let model of models" [value]="model.idModelo">
                             {{model.nombre}}
                             </mat-option>
@@ -25,10 +25,10 @@
                             class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="file" name="imagen" [(ngModel)]="vehiculo.imagen" (change)="selectImage($event)" placeholder="Imágen"
+                        <input type="file" name="imagen" (change)="selectImage($event)" placeholder="Imágen"
                             class="form-control">
                     </div>
-                    <button class="btn btn-success btn-block" (click)="edit ? updateVehicle() : saveNewVehicle()">
+                    <button class="btn btn-success btn-block" (click)="edit ? updateVehicle() : saveNewVehicle()" [routerLink]="['/']">
                         Guardar
                     </button>
                 </form>
@@ -39,9 +39,14 @@
     <div class="col-md-2 tarjeta">
         <div class="card card-body text-center tarjeta">
             <!--<img [src]="game.image  == '' ? '/assets/noimage.png' : game.image" class="card-img-top">!-->
-            <h3>MATRÍCULA: {{vehiculo.matricula == '' ? 'Matrícula' : vehiculo.matricula}}</h3>
-            <p>{{vehiculo.km == '' ? 'Km del vehiculo' : vehiculo.km}} KMs</p>
-            <p>{{vehiculo.km == '' ? 'Km del vehiculo' : vehiculo.km}} Km</p>
+            <h3>Modelo: {{model.nombre == '' ? 'Seleccione un modelo primero' : model.nombre}}</h3>
+            <p>Generación: {{model.generacion == '' ? 'no especificado' : model.generacion}}</p>
+            <p>Inicio fabricación: {{model.fechaInicio == '' ? 'no especificado' : model.fechaInicio}}</p>
+            <p>Fin de fabricación: {{model.fechaFin == '' ? 'no especificado' : model.fechaFin}}</p>
+            <p>Serie: {{model.serie == '' ? 'no especificado' : model.serie}}</p>
+            <p>Modificación: {{model.modificacion == '' ? 'no especificado' : model.modificacion}}</p>
+            <p>Carroceria: {{model.carroceria == '' ? 'no especificado' : model.carroceria}}</p>
+            <p>Combustible: {{model.combustible == '' ? 'no especificado' : model.combustible}}</p>
         </div>
     </div>
 </div>

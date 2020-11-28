@@ -9,6 +9,8 @@ const router = Router();
 // Get brand models
 router.get('/:id' , ModeloController.getVehicleModels);
 
+router.get('/one/:id' , ModeloController.getOne);
+
 router.get('/' , ModeloController.getAll);
 
 export default router;

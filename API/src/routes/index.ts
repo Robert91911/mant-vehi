@@ -5,6 +5,7 @@ import vehicle from './vehicles';
 import mant from './mants'
 import marcas from './marcas'
 import modelos  from './modelos'
+import tipos  from './tiposMant'
 import router from './auth';
 
 const routes = Router();
@@ -15,5 +16,6 @@ routes.use('/vehicles', vehicle);
 routes.use('/mants', mant);
 routes.use('/brand', marcas)
 routes.use('/models', modelos)
+routes.use('/types', tipos)
 
 export default routes;

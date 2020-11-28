@@ -7,6 +7,7 @@ import { HostBinding } from '@angular/core';
 import { BrandService } from '@shared/services/brand.service'
 import { ModelService } from '@shared/services/model.service'
 import { Model } from '@shared/models/model.interface'
+import { Vehicle } from '@app/shared/models/vehicle.interface';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   
   //id_usuario = this.authSvc.userValue.userId;
   
-  vehicles: any = [];
+  vehicles: Vehicle | any;
 
   constructor(public authSvc: AuthService, private vehicleSvc: VehiclesService, private brandSrv: BrandService, private modelSrv: ModelService ) { }
 
@@ -26,9 +27,10 @@ export class HomeComponent implements OnInit {
     this.getAll();
   }
   
-  getAll() {
+  async getAll() {
     const id_usuario = JSON.parse(localStorage.getItem('user')) || null;
     console.log(id_usuario.userId)
+    await delay(100);
     this.vehicleSvc.getAll(id_usuario.userId).subscribe(
       res => {
         this.vehicles = res;
@@ -47,4 +49,11 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  
+
   }
+
+  
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}

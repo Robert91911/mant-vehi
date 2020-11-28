@@ -33,32 +33,52 @@ export class VehiculoFormComponent implements OnInit {
 
   models: Model | any;
 
-  model: Model | any;
+  model: Model | any = {
+    idModelo: '',
+    idMarca: '',
+    nombre: '',
+    generacion: '',
+    fechaInicio: '',
+    fechaFin: '',
+    serie: '',
+    modificacion: '',
+    carroceria: '',
+    combustible: '',
+  }
 
   edit: boolean = false;
 
   constructor(private vehiculoSrv: VehiclesService , private router: Router, private activatedRoute: ActivatedRoute, private brandSrv: BrandService, private modelSrv: ModelService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.getModels()
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
       this.vehiculoSrv.getById(params.id)
       .subscribe(
         res => {
-          console.log(res);
           this.vehiculo = res;
           this.edit = true;
         },
         err => console.error(err)
       )
     }
+    if(this.edit) {
+      this.getModel(this.vehiculo.idModelo)
+    }
   }
 
+  getModel(idModelo) {
+    this.modelSrv.getModel(idModelo).subscribe(
+      res => {
+        this.model = res;
+      },
+      err => console.log(err)
+    );
+  }
 
   getModels(){
     const id_usuario = JSON.parse(localStorage.getItem('user')) || null;
-    console.log(id_usuario.userId)
     this.modelSrv.getAll().subscribe(
       res => {
         this.models = res;

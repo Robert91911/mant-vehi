@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
             <p>Importe: {{mantenimiento.importe}}</p>
-            <p>Creado: {{mantenimiento.fechaCreacion}}</p>
+            <p>Creado: {{mantenimiento.fechaCreacion | date : 'dd/MM/yyyy - hh:mm'}}</p>
             <p>Km: {{mantenimiento.kmMant}}</p>
             <p>Ubicación: {{mantenimiento.ubicacion}}</p>
             <p>Teller: {{mantenimiento.taller}}</p>

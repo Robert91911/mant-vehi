@@ -5,6 +5,18 @@ import { validate } from 'class-validator';
 
 
 export class ModeloController {
+
+      static getOne = async (req: Request, res: Response) => {
+        const { id } = req.params;
+        const vehicleRepository = getRepository(Modelos);
+        try {
+          const vehiculo = await vehicleRepository.findOneOrFail({ where: {idModelo: id}});
+          res.send(vehiculo);
+        } catch (e) {
+          res.status(404).json({ message: 'Not result' });
+        }
+      };
+
     static getVehicleModels = async (req: Request, res: Response) => {
         const { id } = req.params;
         const vehicleRepository = getRepository(Modelos);

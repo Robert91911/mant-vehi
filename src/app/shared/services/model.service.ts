@@ -12,7 +12,7 @@ export class ModelService {
   constructor( private http: HttpClient ) { }
 
   getModel(idModel) {
-    return this.http.get(`${environment.API_URL}/models/${idModel}`);
+    return this.http.get(`${environment.API_URL}/models/one/${idModel}`);
   }
 
   getAll() {

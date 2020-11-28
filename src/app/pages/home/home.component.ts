@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
   
   async getAll() {
     const id_usuario = JSON.parse(localStorage.getItem('user')) || null;
-    console.log(id_usuario.userId)
     await delay(100);
     this.vehicleSvc.getAll(id_usuario.userId).subscribe(
       res => {
@@ -48,8 +47,6 @@ export class HomeComponent implements OnInit {
       err => console.log(err)
     )
   }
-
-  
 
   }
 

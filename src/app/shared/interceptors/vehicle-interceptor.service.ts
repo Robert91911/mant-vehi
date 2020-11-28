@@ -17,7 +17,6 @@ export class VehicleInterceptorService implements HttpInterceptor {
   //Este método intercepta cualquier ruta que no sea login, y le inyecta el token de autentificación
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (!req.url.includes('login')) {
-      console.log("Interceptor")
       const userValue = this.authSvc.userValue;
       const authReq = req.clone({
         setHeaders: {

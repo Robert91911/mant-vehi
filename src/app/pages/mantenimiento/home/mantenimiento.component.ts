@@ -33,6 +33,7 @@ export class MantenimientoComponent implements OnInit {
       res => {
         this.idVehiculo = params.id
         this.mantenimientos = res;
+        this.saveVehicleId(this.idVehiculo)
       },
       err => console.log(err)
     );

@@ -4,7 +4,7 @@
       <mat-icon>menu</mat-icon>
     </button>
   </ng-container>
-  <a href="#" class="btn btn-info btn-md" *ngIf="router.url !== '/login'">
+  <a class="btn btn-info btn-md" *ngIf="router.url !== '/login'" [routerLink]="['/']">
     <span class="glyphicon glyphicon-home"></span> Home
   </a>
 

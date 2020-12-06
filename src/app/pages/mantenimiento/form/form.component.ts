@@ -68,7 +68,6 @@ export class FormComponent implements OnInit {
     );
   }
 
-
   //Metodo de actualizacion del objeto
   updateMant() {
     this.mantSrv.updateMant(this.mantenimiento.idMantenimiento, this.mantenimiento)
@@ -88,8 +87,8 @@ export class FormComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
-        localStorage.removeItem('idVehiculo');
-        this.router.navigate(['/'])
+        //localStorage.removeItem('idVehiculo');
+        this.router.navigate(['/mantenimientos/:idVehiculo'])
       },
       err => console.log(err)
     )

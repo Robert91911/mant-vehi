@@ -53,6 +53,12 @@ export class HomeComponent implements OnInit {
     )
   }
 
+    //Guarda el vehiculo en el almacenamiento local del navegador
+    saveVehicleId(id: number){
+      localStorage.removeItem('idVehiculo');
+      localStorage.setItem('idVehiculo', JSON.stringify(id));
+    }
+
   }
 
   

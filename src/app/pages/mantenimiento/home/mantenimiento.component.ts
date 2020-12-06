@@ -28,12 +28,13 @@ export class MantenimientoComponent implements OnInit {
   //Metodo que trae todos los mantenimientos (llama al método getAll desde el servicio)
   async getAll() {
     const params = this.activatedRoute.snapshot.params;
+    this.saveVehicleId(params.id)
     await delay(100);
     this.mantsSvc.getAll(params.id).subscribe(
       res => {
         this.idVehiculo = params.id
         this.mantenimientos = res;
-        this.saveVehicleId(this.idVehiculo)
+        
       },
       err => console.log(err)
     );

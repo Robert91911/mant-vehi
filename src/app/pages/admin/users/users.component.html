@@ -5,14 +5,14 @@
     color="primary"
     class="btn-new"
   >
-    Add new
+    Nuevo
   </button>
 </div>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <!-- ID Column -->
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID.</th>
     <td mat-cell *matCellDef="let element">{{ element.id }}</td>
   </ng-container>
 
@@ -24,19 +24,19 @@
 
   <!-- Username Column -->
   <ng-container matColumnDef="username">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
     <td mat-cell *matCellDef="let element">{{ element.username }}</td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
     <td mat-cell *matCellDef="let element">
       <div class="table-button-row">
         <button mat-flat-button color="accent" (click)="onOpenModal(element)">
-          Edit
+          Editar
         </button>
         <button mat-flat-button color="warn" (click)="onDelete(element.id)">
-          Delete
+          Borrar
         </button>
       </div>
     </td>

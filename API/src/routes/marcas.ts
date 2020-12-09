@@ -6,8 +6,8 @@ import { MarcasController } from './../controller/MarcasController';
 const router = Router();
 
 // Get all brans
-router.get('/' , MarcasController.getAll);
+router.get('/' , [checkJwt], MarcasController.getAll);
 
-router.get('/one/:id' , MarcasController.getById);
+router.get('/one/:id' , [checkJwt], MarcasController.getById);
 
 export default router;

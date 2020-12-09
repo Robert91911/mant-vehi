@@ -8,7 +8,7 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                    <mat-label>Elije el modelo:</mat-label>
+                    <mat-label>Elije un tipo:</mat-label>
                     <mat-select [(ngModel)]="mantenimiento.idTipo" name="tipes">
                         <mat-option *ngFor="let tipo of tipos" [value]="tipo.idTipo">
                         {{tipo.nombre}}

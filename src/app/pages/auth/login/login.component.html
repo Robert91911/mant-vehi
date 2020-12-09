@@ -8,7 +8,7 @@
             text="text"
             formControlName="username"
             matInput
-            placeholder="Username"
+            placeholder="Email"
             required
           />
           <mat-error *ngIf="checkField('username')">
@@ -20,7 +20,7 @@
             [type]="hide ? 'password' : 'text'"
             formControlName="password"
             matInput
-            placeholder="Password"
+            placeholder="Contraseña"
             required
           />
           <button mat-icon-button matSuffix (click)="hide = !hide">

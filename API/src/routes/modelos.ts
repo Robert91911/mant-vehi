@@ -7,10 +7,10 @@ import { ModeloController } from '../controller/ModeloController';
 const router = Router();
 
 // Get brand models
-router.get('/:id' , ModeloController.getVehicleModels);
+router.get('/:id' , [checkJwt], ModeloController.getVehicleModels);
 
-router.get('/one/:id' , ModeloController.getOne);
+router.get('/one/:id' , [checkJwt], ModeloController.getOne);
 
-router.get('/' , ModeloController.getAll);
+router.get('/' , [checkJwt], ModeloController.getAll);
 
 export default router;

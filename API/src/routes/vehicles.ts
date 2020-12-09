@@ -6,13 +6,13 @@ import { checkRole } from './../middlewares/role';
 const router = Router();
 
 // Get a vehicle
-router.get('/one/:id', VehicleController.getById);
+router.get('/one/:id', [checkJwt], VehicleController.getById);
 
 // Get all vehicles
-router.get('/',  VehicleController.getAll);
+router.get('/',  [checkJwt], VehicleController.getAll);
 
 // Get vehicles of a user
-router.get('/:id', VehicleController.getUserVehicles);
+router.get('/:id', [checkJwt], VehicleController.getUserVehicles);
 
 // Delete vehicle
 router.delete('/:id', [checkJwt],  VehicleController.delete);

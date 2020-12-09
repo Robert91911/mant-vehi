@@ -7,7 +7,7 @@ import { TiposMantsController } from './../controller/TiposMantController'
 const router = Router();
 
 // Get all types
-router.get('/', TiposMantsController.getAll);
+router.get('/', [checkJwt], TiposMantsController.getAll);
 
 
 export default router;

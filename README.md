@@ -1,32 +1,58 @@
-# Login
+# MantVehi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
+Bienvenidos, este es el proyecto de fin de curso del curso formativo DAM, de Robert Marian Amariutei.
 
-## Development server
+## Entorno de desarrollo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para el instalar el entorno de desarrollo, se ha dispuesto un script que compilará el front y el back a la vez y se actualizará cada vez que haya un cambio.
 
-## Code scaffolding
+Para instalar las librerias de node [FRONT]:
+```bash
+npm install
+```
+Para instalar las librerias de node [BACK]:
+```bash
+cd API
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para ejecutar la aplicación en entorno de desarrollo:
+```bash
+npm run dev
+```
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Entorno de producción
 
-## Running unit tests
+Si se quiere pasar el proyecto al entorno de produccion se deben compilar tanto el Front como el Back.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Compilación [FRONT]:
+```bash
+ng build
+```
+Para instalar las librerias de node [BACK]:
+```bash
+cd API
+npm run tsc
+```
 
-## Running end-to-end tests
+Tambien hay que instalar la base de datos, el fichero SQL se incluirá en este repositorio.
+```bash
+mysql -u username -p database_name < file.sql
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+Nota¹: Para que el backend se conecte con la base de datos, hay que actualizar en el fichero ormconfig.json los datos de la conexion.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Nota²: El codigo generado con al compilar se mete en una carpeta llamada dist, tanto en el front como en el back 
 
-## License
 
-This project uses the following license: [MIT](<https://choosealicense.com/licenses/mit/>)
-# mant-vehi
+## Memoria del proyecto
+En el siguiente enlace se encuentra la memoria del proyecto en formato pdf
+
+[Memoria mantvehi](https://go.robert9191.com/memoria-mantvehi)
+
+
+## Licencia
+
+[MIT](https://choosealicense.com/licenses/mit/)
